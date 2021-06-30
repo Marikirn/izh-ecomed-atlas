@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1558px;
+            height: 892px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/58_1.js"></script>
+        <script src="data/61_2.js"></script>
+        <script src="data/64_3.js"></script>
+        <script src="data/67_4.js"></script>
+        <script src="data/70_5.js"></script>
+        <script src="data/73_6.js"></script>
+        <script src="data/76_7.js"></script>
+        <script src="data/79_8.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        function pop_58_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_58_1_0() {
+            return {
+                pane: 'pane_58_1',
+                opacity: 1,
+                color: 'rgba(84,214,82,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_58_1');
+        map.getPane('pane_58_1').style.zIndex = 401;
+        map.getPane('pane_58_1').style['mix-blend-mode'] = 'normal';
+        var layer_58_1 = new L.geoJson(json_58_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_58_1',
+            layerName: 'layer_58_1',
+            pane: 'pane_58_1',
+            onEachFeature: pop_58_1,
+            style: style_58_1_0,
+        });
+        bounds_group.addLayer(layer_58_1);
+        map.addLayer(layer_58_1);
+        function pop_61_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_61_2_0() {
+            return {
+                pane: 'pane_61_2',
+                opacity: 1,
+                color: 'rgba(55,158,54,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_61_2');
+        map.getPane('pane_61_2').style.zIndex = 402;
+        map.getPane('pane_61_2').style['mix-blend-mode'] = 'normal';
+        var layer_61_2 = new L.geoJson(json_61_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_61_2',
+            layerName: 'layer_61_2',
+            pane: 'pane_61_2',
+            onEachFeature: pop_61_2,
+            style: style_61_2_0,
+        });
+        bounds_group.addLayer(layer_61_2);
+        map.addLayer(layer_61_2);
+        function pop_64_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_64_3_0() {
+            return {
+                pane: 'pane_64_3',
+                opacity: 1,
+                color: 'rgba(255,236,21,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_64_3');
+        map.getPane('pane_64_3').style.zIndex = 403;
+        map.getPane('pane_64_3').style['mix-blend-mode'] = 'normal';
+        var layer_64_3 = new L.geoJson(json_64_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_64_3',
+            layerName: 'layer_64_3',
+            pane: 'pane_64_3',
+            onEachFeature: pop_64_3,
+            style: style_64_3_0,
+        });
+        bounds_group.addLayer(layer_64_3);
+        map.addLayer(layer_64_3);
+        function pop_67_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_67_4_0() {
+            return {
+                pane: 'pane_67_4',
+                opacity: 1,
+                color: 'rgba(255,132,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_67_4');
+        map.getPane('pane_67_4').style.zIndex = 404;
+        map.getPane('pane_67_4').style['mix-blend-mode'] = 'normal';
+        var layer_67_4 = new L.geoJson(json_67_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_67_4',
+            layerName: 'layer_67_4',
+            pane: 'pane_67_4',
+            onEachFeature: pop_67_4,
+            style: style_67_4_0,
+        });
+        bounds_group.addLayer(layer_67_4);
+        map.addLayer(layer_67_4);
+        function pop_70_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_70_5_0() {
+            return {
+                pane: 'pane_70_5',
+                opacity: 1,
+                color: 'rgba(236,30,17,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_70_5');
+        map.getPane('pane_70_5').style.zIndex = 405;
+        map.getPane('pane_70_5').style['mix-blend-mode'] = 'normal';
+        var layer_70_5 = new L.geoJson(json_70_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_70_5',
+            layerName: 'layer_70_5',
+            pane: 'pane_70_5',
+            onEachFeature: pop_70_5,
+            style: style_70_5_0,
+        });
+        bounds_group.addLayer(layer_70_5);
+        map.addLayer(layer_70_5);
+        function pop_73_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_73_6_0() {
+            return {
+                pane: 'pane_73_6',
+                opacity: 1,
+                color: 'rgba(173,8,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_73_6');
+        map.getPane('pane_73_6').style.zIndex = 406;
+        map.getPane('pane_73_6').style['mix-blend-mode'] = 'normal';
+        var layer_73_6 = new L.geoJson(json_73_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_73_6',
+            layerName: 'layer_73_6',
+            pane: 'pane_73_6',
+            onEachFeature: pop_73_6,
+            style: style_73_6_0,
+        });
+        bounds_group.addLayer(layer_73_6);
+        map.addLayer(layer_73_6);
+        function pop_76_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_76_7_0() {
+            return {
+                pane: 'pane_76_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_76_7');
+        map.getPane('pane_76_7').style.zIndex = 407;
+        map.getPane('pane_76_7').style['mix-blend-mode'] = 'normal';
+        var layer_76_7 = new L.geoJson(json_76_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_76_7',
+            layerName: 'layer_76_7',
+            pane: 'pane_76_7',
+            onEachFeature: pop_76_7,
+            style: style_76_7_0,
+        });
+        bounds_group.addLayer(layer_76_7);
+        map.addLayer(layer_76_7);
+        function pop_79_8(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Название</th>\
+                        <td>' + (feature.properties['Название'] !== null ? autolinker.link(feature.properties['Название'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ур. шума</th>\
+                        <td>' + (feature.properties['Ур. шума'] !== null ? autolinker.link(feature.properties['Ур. шума'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Среднее</th>\
+                        <td>' + (feature.properties['Среднее'] !== null ? autolinker.link(feature.properties['Среднее'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_79_8_0() {
+            return {
+                pane: 'pane_79_8',
+                opacity: 1,
+                color: 'rgba(1,247,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_79_8');
+        map.getPane('pane_79_8').style.zIndex = 408;
+        map.getPane('pane_79_8').style['mix-blend-mode'] = 'normal';
+        var layer_79_8 = new L.geoJson(json_79_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_79_8',
+            layerName: 'layer_79_8',
+            pane: 'pane_79_8',
+            onEachFeature: pop_79_8,
+            style: style_79_8_0,
+        });
+        bounds_group.addLayer(layer_79_8);
+        map.addLayer(layer_79_8);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/79_8.png" /> шум79': layer_79_8,'<img src="legend/76_7.png" /> шум76': layer_76_7,'<img src="legend/73_6.png" /> шум73': layer_73_6,'<img src="legend/70_5.png" /> шум70': layer_70_5,'<img src="legend/67_4.png" /> шум67': layer_67_4,'<img src="legend/64_3.png" /> шум64': layer_64_3,'<img src="legend/61_2.png" /> шум61': layer_61_2,'<img src="legend/58_1.png" /> шум58': layer_58_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
