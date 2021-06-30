@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Медико-экологический атлас города Ижевска</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar navbar-expand-md navbar-dark bd-navbar sticky-top">
+        <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigarion">
+
+            <a class="navbar-brand p-0 me-2" href="../../index.html" aria-label="Медико-экологический атлас Ижевска">
+                <img src="../../img/izhevsk-logo.png" alt="Медико-экологический атлас Ижевска" width="40" height="32">
+            </a>
+
+            <button class="btn bd-sidebar-toggle d-md-none py-0 px-1 ms-3 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#bd-maps-nav" aria-controls="bd-maps-nav"
+                aria-expanded="false" aria-label="Toggle maps navigation">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <title>Expand</title>
+                    <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z">
+                    </path>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse"
+                    fill="currentColor" viewBox="0 0 16 16">
+                    <title>Collapse</title>
+                    <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z">
+                    </path>
+                </svg>
+
+            </button>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar"
+                aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+                    </path>
+                </svg>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="bdNavbar">
+                <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2" href="../../index.html">О проекте</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2 active" aria-current="true" href="../about_maps.html">Картографические
+                            данные</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2" href="../../autors.html">Авторы</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container-xxl my-md-4 bd-layout">
+
+        <aside class="bd-sidebar">
+            <nav class="collapse bd-links" id="bd-maps-nav" aria-label="Maps navigation">
+
+                <ul class="list-unstyled mb-0 py-3 pt-md-1">
+
+                    <li>
+                        <a class="d-inline-flex align-items-center rounded active" aria-current="page"
+                            href="../about_maps.html">
+                            О картах
+                        </a>
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse"
+                            data-bs-target="#forms-collapse" aria-expanded="true">
+                            Атмосферный воздух
+                        </button>
+
+                        <div class="collapse show" id="forms-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="./about_air.html" aria-current="page">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="./chemical/kiza_kadastr/index.html" aria-current="page">
+                                        КИЗА по кадастру
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Химическое загрязнение
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#customize-collapse" aria-expanded="false">
+                            Водная среда
+                        </button>
+
+                        <div class="collapse" id="customize-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Схема родников
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#layout-collapse" aria-expanded="false">
+                            Депонирующие среды
+                        </button>
+
+                        <div class="collapse" id="layout-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Концентрация железа в снежном покрове
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Концентрация прочих металлов в снежном покрове
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Загрязнение почвы
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Загрязнение почвы тяжелыми металлами
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#getting-started-collapse" aria-expanded="false">
+                            Растительный покров
+                        </button>
+
+                        <div class="collapse" id="getting-started-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded active" href="about_green.html">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Озеленение территории
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Покрытие насаждениями
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#content-collapse" aria-expanded="false">
+                            Детская заболеваемость
+                        </button>
+
+                        <div class="collapse" id="content-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Болезни органов дыхания
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Заболеваемость по педиатрическим участками
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Общая заболеваемость
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#components-collapse" aria-expanded="false">
+                            Риски детскому здоровью
+                        </button>
+
+                        <div class="collapse" id="components-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        По концентрации оксида углерода
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        По концентрации диоксида азота
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        По концентрации формальдегида
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Суммарный индекс риска
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li class="mb-1">
+
+                        <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#helpers-collapse" aria-expanded="false">
+                            Экологическая обстановка в г.Ижевске
+                        </button>
+
+                        <div class="collapse" id="helpers-collapse">
+                            <ul class="list-unstyled fw-normal pb-1 small">
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Описание
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Антропогенная нагрузка
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Медико-экологическое благополучие
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="d-inline-flex align-items-center rounded" href="#">
+                                        Интенсивность транспортных потоков
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="bs-main order-1">
+            <div class="container px-4 px-md-3" id="content">
+                <div class="bd-content">
+
+                    <h4>
+                        Физическое загрязнение воздуха
+                    </h4>
+
+                    <p class="mb-0">
+                        К физическим факторам окружающей среды, подверженным трансформации в результате деятельности
+                        человека и являющимся предметами гигиенической регламентации, относятся: шумовое загрязнение,
+                        электромагнитные и радиационные поля.
+                    </p>
+
+                    <p class="mb-0">
+                        Согласно действующих в России нормативов допустмыми безопасными значениями магнитных полей 5
+                        мкТл в жилых помещениях, детских, дошкольных, школьных, общеобразовательных и медицинских
+                        учреждениях является 5 мкТл ( ГН 2.1.8/2.2.4.2262-07) . В тоже время, переход к нормативам
+                        магнитного поля промышленной частоты на уровне 0,2-0,4 мкТл рассматривается в странах
+                        Европейского Союза как перспективная цель на ближайшие годы.
+                    </p>
+
+                    <p class="mb-0">
+                        Эквивалентный уровень шума является критерием безопасной дозы воздействия на человека и
+                        определяется санитарно-гигиеническим нормативом 55 дБА в дневное время. Основной источник шума в
+                        городской среде - это транспорт. Поэтому наблюдается прямая зависимость интенсивности
+                        транспортных потоков и скоростного режима от величины акустического загрязнения.
+                    </p>
+
+                    <p class="mb-0">
+                        В рамках данных исследований, изучение радиационных полей на территории г.Ижевска не
+                        проводилось.
+                    </p>
+
+                    <h4>
+                        Химическое загрязнение воздуха
+                    </h4>
+
+                    <p class="mb-0">
+                        Атмосфера как наиболее динамичная среда характеризуется сложной пространственно-временной
+                        динамикой уровней содержания примесей. В каждый данный момент времени уровень загрязненности
+                        атмосферы над некоторой территорией определяется приходной (поступление от источников в пределах
+                        территории, привнос извне, образование в результате вторичных химических процессов) и расходной
+                        частями баланса (вынос за пределы территории, осаждение на поверхность, разрушение в атмосфере).
+                    </p>
+
+                    <p class="mb-0">
+                        На территории города Ижевска Комплексная Лаборатория Мониторинга Окружающей Среды Удмуртского
+                        центра по гидрометеорологии и мониторингу окружающей среды проводит регулярные наблюдения за
+                        уровнем загрязнения атмосферного воздуха на 4 стационарных и 2 маршрутных постах. Существующей
+                        сети мониторинга недостаточно для комплексной пространственной характеристики загрязнения
+                        атмосферного воздуха. В связи с этим, при кафедре Экологии и природопользования ФГБОУ ВО «УдГУ»
+                        в период с 2014 по 2016гг. были организованы исследования состояния атмосферного воздуха по
+                        программе эпизодического отбора проб. Исследования производились 1 раз в 3-4 месяца, на
+                        протяжении 10 дней (последовательно, без перерыва) на 12 точках, расположенных, как внутри жилых
+                        кварталов, так и вблизи проезжей части автодорог.
+                    </p>
+
+                    <p class="mb-0">
+                        При помощи газоанализатора ГАНК-4 измерялись среднесуточные концентрации таких веществ как:
+                        углеводороды предельные, углерода оксид, формальдегид, азота диоксид. Замеры осуществлялись 3
+                        раза в сутки по маршруту в установленной последовательности. Отбор проб на первой точке
+                        утреннего маршрута начинался в 6.00, дневного - в 12.00, вечернего – в 18.00. В общей сложности,
+                        в рамках программы эпизодического исследования состояния атмосферного воздуха по каждому
+                        компоненту было осуществлено чуть более 3500 отборов проб. Одновременно с отбором проб
+                        определялись метеорологические показатели, осуществлялся контроль интенсивности транспортного
+                        потока (с учетом структуры потока) в точках, расположенных на автодорогах. Для проведения
+                        пространственного анализа уровня загрязнения атмосферного воздуха в период с мая 2016 по октябрь
+                        2018гг. на территории г. Ижевска были проведены разовые исследования на 120 точках. Привязка
+                        полученных разовых значений концентраций к среднегодовым значениям, по данным эпизодических
+                        исследований, производилась через коэффициент, рассчитываемый как отношение среднего значения
+                        концентрации примеси в точках эпизодического контроля состояния атмосферного воздуха за период с
+                        2014 по 2016 год к среднему значению в точках эпизодического контроля, полученному в период
+                        разовых исследований. Необходимо отметить, что значения данного коэффициента составили 1,2, что
+                        свидетельствует о достаточно близких к среднегодовым значениям, полученным в ходе разовых
+                        исследований. Таким образом, в общей сложности, в рамках комплексного исследования состояния
+                        атмосферного воздуха на территории г. Ижевска около 6000 отборов проб воздуха.
+                    </p>
+
+                    <p class="mb-0">
+                        При проведении замеров и обработке результатов было выяснено, что показатели загрязнения
+                        атмосферного воздуха в среднем за год на проезжей части были выше, чем внутриквартальные. Это
+                        обусловлено интенсивным поступлением в атмосферный воздух продуктов сгорания топлива. Среднее
+                        значение КИЗА (комплексного индекса загрязнения атмосферного воздуха) по загрязняющим веществам
+                        для города Ижевска по данным результатов замеров составило 4,9. При этом, расчет КИЗА для точек,
+                        расположенных вблизи автодорог показал значение равное 6,19, а во внутриквартальной территории
+                        равное 3,61, что в 1,7 раза меньше. Анализ среднегодового хода концентраций загрязняющих веществ
+                        показал, увеличение концентраций по контролируемым примесям в теплый период почти в 1,5 раза.
+                    </p>
+
+                    <p class="mb-0">
+                        Особенно контрастными оказались различия между значениями концентраций ЗВ в теплый и холодный
+                        период на точках, расположенных вблизи автодорог, что указало на влияние метеорологических
+                        условий, как факторов рассеяния примесей в атмосфере. Опытным путем (расчет коэффициента
+                        корреляции, определяющего степень связи между двумя явлениями) было определено, что наиболее
+                        сильная связь уровней загрязнения атмосферного воздуха выявлена со значениями температуры
+                        атмосферного воздуха и ветровым режимом. Расчет степени связи КИЗА и скорости ветра показал
+                        обратную слабую, достоверную связь. Определение степени связи между ветровым режимом и
+                        концентрациями отдельных примесей показало тот же результат. Расчет коэффициента корреляции
+                        между значения КИЗА и температурой атмосферного воздуха показа слабую достоверную положительную
+                        связь (0,4). В тоже время, расчет данного коэффициента между значениями температуры и
+                        концентрациями отдельных примесей определил более разнородную картину. Наибольшая степень связи
+                        отмечалась для формальдегида и характеризовалась как положительная достоверная средняя степень
+                        связи (0,58). Необходимо отметить, что выявленная связь «формальдегид-температура» схожа с
+                        результатами полученным, в рамках исследований проведенных на территории других городов,
+                        например, в г.Ханты-Мансийск.
+                    </p>
+
+                    <p class="mb-0">
+                        Поскольку контроль сопоставимости результатов эпизодических измерений и данных полученных
+                        лабораторией Росгидромета на ПНЗ-8 в декабре 2014 года дал положительный результат, основной
+                        причиной различий в значениях полученных по данным эпизодического контроля и данных сети
+                        государственного мониторинга, являются специфика пространственного размещения пунктов отбора
+                        проб.
+                    </p>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
