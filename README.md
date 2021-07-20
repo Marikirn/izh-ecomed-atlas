@@ -1,1 +1,0 @@
-# izh-ecomed-atlas
