@@ -1,5 +1,6 @@
 .bd-navbar {
   background-color: #163a25;
+font-size: 1.5rem;
 }
 
 .btn {
@@ -10,3 +11,61 @@
 .highlight {
   background: #eef1ee;
 }
+
+
+.carousel slide
+{
+  
+  position: absolute;
+  height: 100%;
+  
+}
+.carousel-caption
+{
+  z-index: 20;
+  width: auto;
+  max-height: fit-content;
+  top: 0%;
+    
+}
+
+.breadcrumb{
+  margin: 0;
+  height: 20px;
+  font-size: 0.8rem;
+}
+.navbar {
+flex-direction: column;
+align-items: flex-start;
+}
+.breadcrumb-item a {
+  color: aliceblue;
+}
+
+
+.container marketing
+{
+  position:relative;
+  top: -310px;
+  z-index: 20;
+  background-color:rgba(205, 214, 219, 0);
+}
+ .col
+ {
+  background-color:rgba(205, 214, 219, 0);
+ }
+ .card
+ {
+  background-color:rgba(205, 214, 219, 0);
+ }
+.card-body
+{
+  background-color:rgba(205, 214, 219, 0.5);
+}
+.btn-primary1
+{
+  background-color:rgba(205, 214, 219, 1);
+}
+    @media (min-width: 768px){
+      .container marketi{top: 20px;}
+    }
